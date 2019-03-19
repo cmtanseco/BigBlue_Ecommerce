@@ -5,19 +5,23 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-import Vue from 'vue'
-import App from '../app.vue'
+import TurbolinksAdapter from 'vue-turbolinks';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const el = document.body.appendChild(document.createElement('hello'))
-  const app = new Vue({
-    el,
-    render: h => h(App)
-  })
+import Vue from 'vue';
+import App from '../app.vue';
 
-  console.log(app)
-})
+Vue.use(TurbolinksAdapter);
 
+document.addEventListener('turbolinks:load', () => {
+  const el = document.getElementById('app');
+
+  if (el !== null) {
+    new Vue({
+      el,
+      render: h => h(App)
+    });
+  }
+});
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
