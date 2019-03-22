@@ -1,5 +1,5 @@
 class PagesController < InheritedResources::Base
-
+  http_basic_authenticate_with name: "ctanseco", password: "bigblue"
   private
 
     def page_params
