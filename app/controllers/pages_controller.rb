@@ -1,5 +1,5 @@
 class PagesController < InheritedResources::Base
-  http_basic_authenticate_with name: "ctanseco", password: "bigblue"
+  #http_basic_authenticate_with name: "ctanseco", password: "bigblue"
 
   def home
     @page = Page.find_by(permalink: 'home')
