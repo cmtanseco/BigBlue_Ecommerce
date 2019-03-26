@@ -3,5 +3,6 @@
 <ul>
   <% @products.each do |product| %>
     <li><%= link_to product.name, product %></li>
+    <p><%= image_tag product.image.thumbnail.url %></p>
   <% end %>
 </ul>
