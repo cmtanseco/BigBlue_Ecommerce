@@ -8,5 +8,7 @@ class Product < ApplicationRecord
   validates :stock, numericality: { only_integer: true }
   validates :name, uniqueness: true
 
+  paginates_per 2
+
   mount_uploader :image, ImageUploader
 end

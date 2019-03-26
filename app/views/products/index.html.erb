@@ -1,7 +1,6 @@
 <h2>All Products</h2>
-
-<ul>
+<%= paginate @products %>
   <%= render partial: 'products/product',
             collection: @products,
             locals: {show_links: true } %>
-</ul>
+<%= paginate @products %>
