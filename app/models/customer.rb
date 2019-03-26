@@ -5,14 +5,4 @@ class Customer < ApplicationRecord
   validates :email, uniqueness: true
   validates :phone, numericality: true, length: { minimum: 10, maximum: 15 }
   validates :postal_code, format: { with: canadian_postal_code }
-  # t.string :first_name
-  #     t.string :last_name
-  #     t.string :email
-  #     t.string :password
-  #     t.string :phone
-  #     t.string :address
-  #     t.string :city
-  #     t.string :province
-  #     t.string :postal_code
-  #     t.string :country
 end
