@@ -1,8 +1,7 @@
 <h2>All Products</h2>
 
 <ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.name, product %></li>
-    <p><%= image_tag product.image.thumbnail.url %></p>
-  <% end %>
+  <%= render partial: 'products/product',
+            collection: @products,
+            locals: {show_links: true } %>
 </ul>

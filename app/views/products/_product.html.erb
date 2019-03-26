@@ -1,0 +1,10 @@
+<div class="product">
+  <% if show_links %>
+    <h3><%= link_to product.name, product %></h3>
+  <% else %>
+    <h3><%= product.name %></h3>
+  <% end %>
+  <% if product.image.present? %>
+    <p><%= image_tag product.image.thumbnail.url %></p>
+  <% end %>
+</div>
