@@ -1,8 +1,11 @@
 <h3><%= @category.name %></h3>
 
 <ul>
-  <% @category.products.each do |category| %>
-    <li><%= link_to category.name, product_url %></li>
+  <% @category.products.each do |product| %>
+    <li><%= link_to product.name, product %></li>
+    <%= link_to product do %>
+    <p><%= image_tag product.image.thumbnail.url %></p>
+    <% end %>
   <% end %>
 </ul>
 

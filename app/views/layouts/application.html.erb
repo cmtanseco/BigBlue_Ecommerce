@@ -23,6 +23,11 @@
           <li class="nav-item"><%= link_to "Contact", "/ca/contact", :class => "nav-link" %></li>
         </ul>
     </nav>
+    <%= form_tag(search_results_path, method: "get") do %>
+      <%= select_tag(:type, options_from_collection_for_select(Category.all, 'id', 'name'), { :include_blank => 'All'})%>
+      <%= text_field_tag(:q, nil, required: 'required') %>
+      <%= submit_tag("Search") %>
+    <% end %>
   </header>
 
   <body>

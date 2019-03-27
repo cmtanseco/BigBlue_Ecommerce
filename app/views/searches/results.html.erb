@@ -1,0 +1,11 @@
+<h1>Search Results</h1>
+
+<h2>Your query for "<%= @query %>" resulted in <%= pluralize(@results_count, 'result') %>.</h2>
+<%= paginate @search_results %>
+<% @search_results.each do |product| %>
+    <h5><%= link_to product.name, product %></h5>
+    <%= link_to product do %>
+    <p><%= image_tag product.image.thumbnail.url %></p>
+    <% end %>
+<% end %>
+<%= paginate @search_results %>
