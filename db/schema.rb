@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_215949) do
+ActiveRecord::Schema.define(version: 2019_04_12_193038) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -52,14 +52,26 @@ ActiveRecord::Schema.define(version: 2019_03_26_215949) do
     t.string "phone"
     t.string "address"
     t.string "city"
-    t.string "province"
     t.string "postal_code"
-    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "province_id"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["province_id"], name: "index_customers_on_province_id"
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "designers", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "designers", force: :cascade do |t|
+  create_table "order_statuses", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,7 +86,12 @@ ActiveRecord::Schema.define(version: 2019_03_26_215949) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "subtotal"
+    t.decimal "tax"
+    t.decimal "shipping"
+    t.integer "order_status_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
@@ -91,6 +108,9 @@ ActiveRecord::Schema.define(version: 2019_03_26_215949) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "unit_price"
+    t.integer "quantity"
+    t.decimal "total_price"
     t.index ["order_id"], name: "index_product_orders_on_order_id"
     t.index ["product_id"], name: "index_product_orders_on_product_id"
   end
@@ -106,8 +126,16 @@ ActiveRecord::Schema.define(version: 2019_03_26_215949) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.boolean "active"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["designer_id"], name: "index_products_on_designer_id"
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "searches", force: :cascade do |t|
@@ -115,6 +143,18 @@ ActiveRecord::Schema.define(version: 2019_03_26_215949) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
