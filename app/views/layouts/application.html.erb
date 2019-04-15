@@ -38,6 +38,9 @@
       <%= text_field_tag(:q, nil, required: 'required') %>
       <%= submit_tag("Search") %>
     <% end %>
+    <p class="cart">
+      <%= link_to "CART " + session[:cart].count.to_s, cart_path%>
+    </p>
   </header>
 
   <body>
@@ -47,6 +50,7 @@
   <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
   <% end %>
+  <%= debug session[:cart]  %>
     <%= yield %>
   </body>
 </html>

@@ -1,12 +1,13 @@
 <div class="product">
   <% if show_links %>
-    <h3><%= link_to product.name, product %></h3>
+    <h3><%= link_to product.name + ' - ' + product.size, product %></h3>
   <% else %>
     <h3><%= product.name %></h3>
   <% end %>
   <% if product.image.present? %>
-  <%= link_to product do %>
-    <p><%= image_tag product.image.thumbnail.url %></p>
+    <%= link_to product do %>
+      <p><%= image_tag product.image.thumbnail.url %></p>
+    <% end %>
   <% end %>
-  <% end %>
+  <p><%= product.price %> <%= link_to 'ADD TO CART', add_to_cart_product_path(product), method: :post %></p>
 </div>

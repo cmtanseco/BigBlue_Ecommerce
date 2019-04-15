@@ -1,0 +1,38 @@
+<p><%= link_to 'CLEAR CART', clear_cart_products_path, method: :post %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th></th>
+    </tr>
+  </thead>
+<tbody>
+ <% @cart.each_with_index do |product, index| %>
+    <tr>
+      <td><%= image_tag(product.image.url, alt:'product.png', width: 100 )%></td>
+      <td><%= product.name %></td>
+      <td><%= number_to_currency product.price %></td>
+      <td>
+        <%= form_tag("/products/#{product.id}/update_cart", method: "post") do %>
+        <div class="input-field col s5">
+          <%= number_field_tag(:stock, session[:cart][index]['stock'], min: 1) %>
+          <%= button_tag("Update",class: "btn waves-effect waves-light")%>
+        </div>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "/products/#{product.id}/remove_from_cart", method: :post do %>
+          REMOVE ITEM
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<% if session[:cart].count > 0 %>
+  <p>Subtotal: <%= number_to_currency session[:subtotal] %></p>
+<% end %>

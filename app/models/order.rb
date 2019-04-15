@@ -3,5 +3,5 @@ class Order < ApplicationRecord
   has_many :product_orders
   has_many :products, through: :product_orders
 
-  validates :quantity, numericality: { only_integer: true }
+validates :order_date, presence: true
 end

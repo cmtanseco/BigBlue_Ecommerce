@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  orderdate: 2019-03-21 22:50:37
-  quantity: 1
-  status: MyString
+  order_date: 2019-04-14
+  order_total: 
   customer: one
-  product: one
+  gst_amount: 9.99
+  pst_hst_amount: 9.99
 
 two:
-  orderdate: 2019-03-21 22:50:37
-  quantity: 1
-  status: MyString
+  order_date: 2019-04-14
+  order_total: 
   customer: two
-  product: two
+  gst_amount: 9.99
+  pst_hst_amount: 9.99

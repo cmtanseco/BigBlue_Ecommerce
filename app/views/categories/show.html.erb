@@ -6,7 +6,9 @@
     <%= link_to product do %>
     <p><%= image_tag product.image.thumbnail.url %></p>
     <% end %>
+    <p><%= product.price %> <%= link_to 'ADD TO CART', add_to_cart_product_path(product), method: :post %></p>
   <% end %>
+
 </ul>
 
 
